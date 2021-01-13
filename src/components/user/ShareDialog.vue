@@ -20,7 +20,6 @@
           <v-list-item>
             <v-list-item-content align="center">
               <facebook-button
-                :url="'http://localhost:8083/news/id/' + this.$route.params.id"
                 :description="'Baca di Voyagee! ' + currentNews.title"
               />
             </v-list-item-content>

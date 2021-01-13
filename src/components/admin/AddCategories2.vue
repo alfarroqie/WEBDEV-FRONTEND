@@ -21,21 +21,10 @@
               <div class="row">
                 <label class="control-label col-sm-2">Destination?</label>
                 <div class="col-sm-10">
-                    <v-radio-group
-                    v-model="ex7"
-                    column
-                    >
-                    <v-radio
-                        label= "Yes"
-                        color= "green"
-                        value= true
-                    ></v-radio>
-                    <v-radio
-                        label="No"
-                        color="red"
-                        value= false
-                    ></v-radio>
-                    </v-radio-group>
+                  <v-radio-group v-model="ex7" column>
+                    <v-radio label="Yes" color="green" value="true"></v-radio>
+                    <v-radio label="No" color="red" value="false"></v-radio>
+                  </v-radio-group>
                 </div>
               </div>
             </div>
@@ -91,11 +80,9 @@ export default {
         })
         .catch((e) => {
           console.log(e);
+          this.message = "Failed to create category";
         });
     },
   },
-//   mounted() {
-//     this.retrieveCategory();
-//   },
 };
 </script>

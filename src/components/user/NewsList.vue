@@ -51,6 +51,7 @@
                       <v-card-actions>
                         <v-col>
                           <v-icon medium>mdi-eye-outline</v-icon>
+                          <v-text> {{ thisNews.views }} views </v-text>
                         </v-col>
                         <v-col class="text-right">
                           <v-icon medium>mdi-heart-outline</v-icon>
@@ -70,7 +71,7 @@
 
 <script>
 import NewsDataService from "../../services/NewsDataService";
-import {BASE_URL} from "../../constURL";
+import { BASE_URL } from '../../constURL';
 
 export default {
   name: "news-list",

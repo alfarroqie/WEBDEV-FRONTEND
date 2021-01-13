@@ -1,51 +1,60 @@
 <template>
-<v-app>
+  <v-app>
     <div class="wrapper">
-    <div class="sidebar">
-      <div class="logo">
-        <img
-          src=" https://i.ibb.co/Rb6yXLg/Voyagee-removebg-preview.png"
-          width="150"
-          height="75"
-        />
+      <div class="sidebar">
+        <div class="logo">
+          <img
+            src=" https://i.ibb.co/Rb6yXLg/Voyagee-removebg-preview.png"
+            width="150"
+            height="75"
+          />
+        </div>
+        <ul>
+          <li @click="onDashboardClick">
+            <v-icon medium>mdi-chart-line</v-icon>
+            <v-text> Dashboard</v-text>
+          </li>
+          <li @click="onAddCategoriesClick">
+            <v-icon medium>mdi-view-grid-plus</v-icon>
+            <v-text> Tambah Kategori</v-text>
+          </li>
+          <li @click="onPostArticleClick">
+            <v-icon medium>mdi-pencil-plus</v-icon>
+            <v-text> Unggah Artikel</v-text>
+          </li>
+          <li @click="onListArticleClick">
+            <v-icon medium>mdi-newspaper-variant-multiple-outline</v-icon>
+            <v-text> Daftar Artikel</v-text>
+          </li>
+          <li @click="onListCategoriesClick">
+            <v-icon medium>mdi-view-list</v-icon>
+            <v-text> Daftar Kategori</v-text>
+          </li>
+          <li @click="onListUserClick">
+            <v-icon medium>mdi-account-multiple</v-icon>
+            <v-text> Daftar User</v-text>
+          </li>
+          <li @click="onAddAdminClick">
+            <v-icon medium>mdi-account-plus</v-icon>
+            <v-text> Tambah Admin</v-text>
+          </li>
+          <li @click="onLogOutClick">
+            <v-icon medium>mdi-logout-variant</v-icon>
+            <v-text> Logout</v-text>
+          </li>
+        </ul>
       </div>
-      <ul>
-        <li>
-          <a @click="onAddCategoriesClick"><i class="fas fa-chart-line"></i>Add Categories</a>
-        </li>
-        <li>
-          <a @click="onPostArticleClick"
-            ><i class="far fa-newspaper"></i>Post Artikel</a
-          >
-        </li>
-        <li>
-          <a @click="onListArticleClick"
-            ><i class="far fa-file-alt"></i>Daftar Artikel</a
-          >
-        </li>
-        <li>
-          <a @click="onListCategoriesClick"
-            ><i class="far fa-file-alt"></i>Daftar Kategori</a
-          >
-        </li>
-        <li>
-          <a @click="onLogOutClick"
-            ><i class="far fa-file-alt"></i>Log Out</a
-          >
-        </li>
-      </ul>
-    </div>
-    <div class="main_content">
-      <div class="header">
-        CMS
-        <a class="header">admin</a>
-        <i class="fas fa-user-circle"></i>
+      <div class="main_content">
+        <div class="header">
+          CMS
+          <a class="header">admin</a>
+          <i class="fas fa-user-circle"></i>
+        </div>
+        <!-- taruh template vue lain di sini -->
+        <router-view></router-view>
       </div>
-      <!-- taruh template vue lain di sini -->
-       <router-view></router-view>
     </div>
-  </div>
-</v-app>
+  </v-app>
 </template>
 
 <script>
@@ -54,9 +63,13 @@ export default {};
 </script>
 
 <script>
-export default{
-  name: 'AddCategories',
+export default {
+  name: "AddCategories",
   methods: {
+    onDashboardClick() {
+      if (this.$route.path !== "/admin/dashboard")
+        this.$router.push("/admin/dashboard");
+    },
     onAddCategoriesClick() {
       if (this.$route.path !== "/admin/addCategories")
         this.$router.push("/admin/addCategories");
@@ -73,37 +86,33 @@ export default{
       if (this.$route.path !== "/admin/listCategories")
         this.$router.push("/admin/listCategories");
     },
-    onLogOutClick(){
-      
-    }
+    onLogOutClick() {},
   },
-  mounted(){
-
-  }
-}
+  mounted() {},
+};
 </script>
 <style>
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap");
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
 }
 
-body{
-   background-color: #fff;
+body {
+  background-color: #fff;
 }
 
-.wrapper{
+.wrapper {
   display: flex;
   position: relative;
 }
 
-.wrapper .sidebar{
+.wrapper .sidebar {
   width: 200px;
   height: 100%;
   background: #abcabd;
@@ -111,59 +120,57 @@ body{
   position: fixed;
 }
 
-.wrapper .sidebar h2{
+.wrapper .sidebar h2 {
   color: #000000;
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 30px;
 }
 
-.wrapper .sidebar ul li{
+.wrapper .sidebar ul li {
   padding: 15px 0px;
   border-bottom: 1px solid #bdb8d7;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.wrapper .sidebar ul li a{
+.wrapper .sidebar ul li a {
   color: #000000;
   display: block;
 }
 
-.wrapper .sidebar ul li a .fas{
+.wrapper .sidebar ul li a .fas {
   width: 25px;
 }
 
-.wrapper .sidebar ul li:hover{
+.wrapper .sidebar ul li:hover {
   cursor: pointer;
   background-color: #594f8d;
 }
 
-.wrapper .sidebar ul li:hover a{
+.wrapper .sidebar ul li:hover a {
   color: #fff;
 }
 
-
-
-.wrapper .main_content{
+.wrapper .main_content {
   width: 100%;
-  float : left;
+  float: left;
   margin-left: 200px;
 }
 
-.wrapper .main_content .header{
+.wrapper .main_content .header {
   font-size: 40px;
   padding: 20px;
   background: #fff;
   color: #717171;
   border-bottom: 1px solid #e0e4e8;
 }
-.wrapper .main_content .header a{
-	float: right;
-	font-size : 20px;
+.wrapper .main_content .header a {
+  float: right;
+  font-size: 20px;
 }
 
-.wrapper .main_content .header i{
-	float: right;
+.wrapper .main_content .header i {
+  float: right;
 }
 </style>
