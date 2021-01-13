@@ -47,8 +47,12 @@
       <div class="main_content">
         <div class="header">
           CMS
-          <a class="header">admin</a>
-          <i class="fas fa-user-circle"></i>
+          <div class="admin">
+            <v-col>
+              <v-icon large>mdi-account-circle</v-icon>
+              <v-text> admin</v-text>
+            </v-col>
+          </div>
         </div>
         <!-- taruh template vue lain di sini -->
         <router-view></router-view>
@@ -85,6 +89,14 @@ export default {
     onListCategoriesClick() {
       if (this.$route.path !== "/admin/listCategories")
         this.$router.push("/admin/listCategories");
+    },
+    onListUserClick() {
+      if (this.$route.path !== "/admin/listUser")
+        this.$router.push("/admin/listUser");
+    },
+    onAddAdminClick() {
+      if (this.$route.path !== "/admin/addAdmin")
+        this.$router.push("/admin/addAdmin");
     },
     onLogOutClick() {},
   },
@@ -165,12 +177,9 @@ body {
   color: #717171;
   border-bottom: 1px solid #e0e4e8;
 }
-.wrapper .main_content .header a {
-  float: right;
-  font-size: 20px;
-}
 
-.wrapper .main_content .header i {
+.wrapper .main_content .header .admin {
   float: right;
+  font-size: 30px;
 }
 </style>
