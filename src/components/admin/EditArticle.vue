@@ -110,11 +110,8 @@ export default {
           this.categoryCurrent = this.currentNews.categories.map(
             this.mapCurrenCategory
           );
-          console.log(response.data);
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
 
     retrieveCategory() {
@@ -122,9 +119,7 @@ export default {
         .then((response) => {
           this.category = response.data.map(this.mapNewsCategory);
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
 
     updatePublished(status) {
@@ -138,16 +133,13 @@ export default {
       };
 
       NewsDataService.update(this.currentNews.id, data)
-        .then((response) => {
+        .then(() => {
           this.currentNews.publish = status;
-          console.log(response.data);
           this.message = this.currentNews.publish
             ? "The news has been published successfully!"
             : "The news has been unpublished!";
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
 
     updateNews() {
@@ -163,24 +155,18 @@ export default {
       // }
 
       NewsDataService.update(this.currentNews.id, this.currentNews)
-        .then((response) => {
-          console.log(response.data);
+        .then(() => {
           this.message = "The news was updated successfully!";
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
 
     deleteNews() {
       NewsDataService.delete(this.currentNews.id)
-        .then((response) => {
-          console.log(response.data);
+        .then(() => {
           this.$router.push("/admin/listArticle");
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
 
     mapNewsCategory(category) {

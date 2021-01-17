@@ -42,11 +42,8 @@ export default {
       UserService.getAll()
         .then((response) => {
           this.users = response.data;
-          console.log(response.data);
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
 
     refreshList() {
@@ -58,9 +55,7 @@ export default {
         .then(() => {
           this.refreshList();
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
 
     getDisplayUser(users) {
