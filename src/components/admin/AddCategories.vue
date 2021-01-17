@@ -1,93 +1,124 @@
 <template>
-    <div class="wrapper wrapper--w900">
-        <div class="card card-4">
-                <div class="card-body">
-                    <h2 class="title">Add Category</h2>
-                    <form method="POST">
-                        <div class="row row-space">
-                            <div class="col-5">
-                                <div class="input-group">
-                                    <label class="label">Category Name</label>
-                                    <input class="input--style-4" type="text" 
-                                    name="category" v-model="categoryName" required>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="input-group">
-                                    <label class="label">Is A Location :</label>
-                                    <div class="p-t-10">
-                                        <label class="radio-container m-r-45">Yes
-                                            <input type="radio" name="location" :value="true" v-model="isLocation">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="radio-container">No
-                                            <input type="radio" checked="checked" name="location" :value="false" v-model="isLocation">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-t-15">
-                             <input type="button" class="btn btn--radius-2 btn--blue" value="Submit" @click="addCategories(categoryName)">
-                         </div>
-                    </form>
+  <div class="wrapper wrapper--w900">
+    <div class="card card-4">
+      <div class="card-body">
+        <h2 class="title">Add Category</h2>
+        <form method="POST">
+          <div class="row row-space">
+            <div class="col-5">
+              <div class="input-group">
+                <label class="label">Category Name</label>
+                <input
+                  class="input--style-4"
+                  type="text"
+                  name="category"
+                  v-model="categoryName"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="input-group">
+                <label class="label">Is A Location :</label>
+                <div class="p-t-10">
+                  <label class="radio-container m-r-45"
+                    >Yes
+                    <input
+                      type="radio"
+                      name="location"
+                      :value="true"
+                      v-model="isLocation"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="radio-container"
+                    >No
+                    <input
+                      type="radio"
+                      checked="checked"
+                      name="location"
+                      :value="false"
+                      v-model="isLocation"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
                 </div>
-        </div>
-        <v-overlay :value="overlay" v-if="isLoading">
-        <v-progress-circular class="loading"
+              </div>
+            </div>
+          </div>
+          <div class="p-t-15">
+            <input
+              type="button"
+              class="btn btn--radius-2 btn--blue"
+              value="Submit"
+              @click="addCategories(categoryName)"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+    <v-overlay :value="overlay" v-if="isLoading">
+      <v-progress-circular
+        class="loading"
         indeterminate
         color="red"
-        ></v-progress-circular>
-        </v-overlay>
-        <error-dialog class="loading" errorTitle="Error" errorMessage="Error while adding category" :isDialog="isError" v-if="isError"> </error-dialog>
-
-    </div>
+      ></v-progress-circular>
+    </v-overlay>
+    <error-dialog
+      class="loading"
+      errorTitle="Error"
+      errorMessage="Error while adding category"
+      :isDialog="isError"
+      v-if="isError"
+    >
+    </error-dialog>
+  </div>
 </template>
 
 <script>
-  import CategoryService from "../../services/CategoryDataService"
-  import ErrorDialog from "../ErrorDialog.vue"
-  export default{
-    components:{
-      ErrorDialog,
+const CategoryService = () => import("../../services/CategoryDataService");
+const ErrorDialog = () => import("../ErrorDialog.vue");
+export default {
+  components: {
+    ErrorDialog,
+  },
+  data() {
+    return {
+      categoryName: "",
+      isLocation: false,
+      isLoading: false,
+      isError: false,
+    };
+  },
+  methods: {
+    addCategories: function () {
+      console.log(this.categoryName);
+      console.log(this.isLocation);
+      const categorys = {
+        name: this.categoryName,
+        isLocation: this.isLocation,
+      };
+      this.isLoading = true;
+      CategoryService.create(categorys)
+        .then((result) => {
+          this.isLoading = false;
+          console.log(result);
+        })
+        .catch((err) => {
+          this.isLoading = false;
+          this.isError = true;
+          console.log(err);
+        });
     },
-    data(){
-      return{
-        categoryName : "",
-        isLocation : false,
-        isLoading : false,
-        isError : false,
-
-      }
-    },
-    methods:{
-      addCategories : function(){
-          console.log(this.categoryName)
-          console.log(this.isLocation)
-          const categorys = {
-            name: this.categoryName,
-            isLocation: this.isLocation
-          }
-          this.isLoading = true;
-          CategoryService.create(categorys)
-              .then(result => {
-                this.isLoading = false
-                console.log(result)})
-              .catch(err => {
-                this.isLoading = false
-                this.isError = true
-                console.log(err)})
-    }
-    }
-  }
-  </script>
+  },
+};
+</script>
 <style scoped>
 .p-t-15 {
   padding-top: 15px;
 }
 
-.loading{
+.loading {
   position: fixed;
   right: 50%;
   top: 50%;
@@ -106,8 +137,6 @@
   transition: all 0.4s ease;
   cursor: pointer;
   font-size: 18px;
-
-  
 }
 
 .btn--radius {
@@ -285,7 +314,7 @@
    #CARD
    ========================================================================== */
 .card {
-   padding: 0px 120px;
+  padding: 0px 120px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;

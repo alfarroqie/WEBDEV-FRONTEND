@@ -36,9 +36,9 @@
 </template>
 
 <script>
-import NewsDataService from "../../services/NewsDataService";
-import ShareDialog from "./ShareDialog.vue";
-import {BASE_URL} from "../../constURL";
+const NewsDataService = () => import("../../services/NewsDataService");
+const ShareDialog = () => import("./ShareDialog.vue");
+import { BASE_URL } from "../../constURL";
 
 export default {
   components: {

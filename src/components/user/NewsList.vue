@@ -70,8 +70,8 @@
 </template>
 
 <script>
-import NewsDataService from "../../services/NewsDataService";
-import { BASE_URL } from '../../constURL';
+const NewsDataService = () => import("../../services/NewsDataService");
+import { BASE_URL } from "../../constURL";
 
 export default {
   name: "news-list",

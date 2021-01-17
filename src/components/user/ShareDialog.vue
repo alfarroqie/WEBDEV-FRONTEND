@@ -45,11 +45,19 @@
 </template>
 
 <script>
-import NewsDataService from "../../services/NewsDataService";
-import TwitterButton from "vue-share-buttons/src/components/TwitterButton";
-import FacebookButton from "vue-share-buttons/src/components/FacebookButton";
-import WhatsAppButton from "vue-share-buttons/src/components/WhatsAppButton";
-import TelegramButton from "vue-share-buttons/src/components/TelegramButton";
+const NewsDataService = () => import("../../services/NewsDataService");
+const TwitterButton = () =>
+  import("vue-share-buttons/src/components/TwitterButton");
+const FacebookButton = () =>
+  import("vue-share-buttons/src/components/FacebookButton");
+const WhatsAppButton = () =>
+  import("vue-share-buttons/src/components/WhatsAppButton");
+const TelegramButton = () =>
+  import("vue-share-buttons/src/components/TelegramButton");
+// import TwitterButton from "vue-share-buttons/src/components/TwitterButton";
+// import FacebookButton from "vue-share-buttons/src/components/FacebookButton";
+// import WhatsAppButton from "vue-share-buttons/src/components/WhatsAppButton";
+// import TelegramButton from "vue-share-buttons/src/components/TelegramButton";
 
 export default {
   name: "share",

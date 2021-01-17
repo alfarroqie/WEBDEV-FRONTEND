@@ -94,7 +94,7 @@
 </template>
 
 <script>
-import CategoryService from "../../services/CategoryDataService";
+const CategoryService = () => import("../../services/CategoryDataService");
 export default {
   data() {
     return {

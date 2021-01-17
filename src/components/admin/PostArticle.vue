@@ -40,13 +40,13 @@
                     required
                   ></v-select> -->
                   <v-select
-                      v-model="idCategoryNews"
-                      :items="category"
-                      attach
-                      chips
-                      placeholder="Pilih Kategori"
-                      multiple
-                    ></v-select>
+                    v-model="idCategoryNews"
+                    :items="category"
+                    attach
+                    chips
+                    placeholder="Pilih Kategori"
+                    multiple
+                  ></v-select>
                 </div>
               </div>
             </div>
@@ -79,8 +79,8 @@
 
 <script>
 import { VueEditor } from "vue2-editor";
-import NewsDataService from "../../services/NewsDataService";
-import CategoryService from "../../services/CategoryDataService";
+const NewsDataService = () => import("../../services/NewsDataService");
+const CategoryService = () => import("../../services/CategoryDataService");
 export default {
   components: {
     VueEditor,
@@ -113,7 +113,7 @@ export default {
       news.append("title", this.title);
       news.append("content", this.content);
       news.append("publish", false);
-      for (const i in this.idCategoryNews){
+      for (const i in this.idCategoryNews) {
         news.append("categoryId[]", this.idCategoryNews[i]);
       }
       news.append("pictLink", this.pictLink);

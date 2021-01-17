@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import UserService from "../../services/UserDataService";
+const UserService = () => import("../../services/UserDataService");
 export default {
   name: "users-list",
   data() {

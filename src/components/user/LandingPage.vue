@@ -127,9 +127,9 @@
 </template>
 
 <script>
-import NewsDataService from "../../services/NewsDataService";
-import CategoryService from "../../services/CategoryDataService";
-import {BASE_URL} from "../../constURL";
+const NewsDataService = () => import("../../services/NewsDataService");
+const CategoryService = () => import("../../services/CategoryDataService");
+import { BASE_URL } from "../../constURL";
 
 export default {
   name: "news-list",

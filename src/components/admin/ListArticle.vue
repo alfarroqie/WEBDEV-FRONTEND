@@ -22,9 +22,15 @@
             <v-icon small class="mr-2" @click="editNews(item.id)"
               >mdi-pencil</v-icon
             >
-            <v-icon small class="mr-2" @click="deleteNews(item.id)">mdi-delete</v-icon>
-            <v-icon small class="mr-2" @click="publishNews(item.id)">mdi-upload</v-icon>
-            <v-icon small class="mr-2" @click="unpublishNews(item.id)">mdi-download</v-icon>
+            <v-icon small class="mr-2" @click="deleteNews(item.id)"
+              >mdi-delete</v-icon
+            >
+            <v-icon small class="mr-2" @click="publishNews(item.id)"
+              >mdi-upload</v-icon
+            >
+            <v-icon small class="mr-2" @click="unpublishNews(item.id)"
+              >mdi-download</v-icon
+            >
           </template>
         </v-data-table>
 
@@ -37,7 +43,7 @@
 </template>
 
 <script>
-import NewsDataService from "../../services/NewsDataService";
+const NewsDataService = () => import("../../services/NewsDataService");
 export default {
   name: "theNews-list",
   data() {
@@ -69,7 +75,7 @@ export default {
       this.retrieveNews();
     },
 
-    removeAllNews: function() {
+    removeAllNews: function () {
       NewsDataService.deleteAll()
         .then((response) => {
           console.log(response.data);
@@ -95,30 +101,30 @@ export default {
       this.$router.push({ name: "news-details", params: { id: id } });
     },
 
-    publishNews(id){
+    publishNews(id) {
       const news = {
-        publish: true
-      }
-      NewsDataService.publishNews(id,news)
+        publish: true,
+      };
+      NewsDataService.publishNews(id, news)
         .then(() => {
           this.refreshList();
         })
         .catch((err) => {
           console.log(err);
-        })
+        });
     },
 
-    unpublishNews(id){
+    unpublishNews(id) {
       const news = {
-        publish: false
-      }
-      NewsDataService.publishNews(id,news)
+        publish: false,
+      };
+      NewsDataService.publishNews(id, news)
         .then(() => {
           this.refreshList();
         })
         .catch((err) => {
           console.log(err);
-        })
+        });
     },
 
     deleteNews(id) {

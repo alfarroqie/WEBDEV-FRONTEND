@@ -40,13 +40,13 @@
                     outlined
                   ></v-select> -->
                   <v-select
-                      v-model="categoryCurrent"
-                      :items="category"
-                      attach
-                      chips
-                      placeholder="Pilih Kategori"
-                      multiple
-                    ></v-select>
+                    v-model="categoryCurrent"
+                    :items="category"
+                    attach
+                    chips
+                    placeholder="Pilih Kategori"
+                    multiple
+                  ></v-select>
                 </div>
               </div>
             </div>
@@ -87,8 +87,8 @@
 
 <script>
 import { VueEditor } from "vue2-editor";
-import NewsDataService from "../../services/NewsDataService";
-import CategoryService from "../../services/CategoryDataService";
+const NewsDataService = () => import("../../services/NewsDataService");
+const CategoryService = () => import("../../services/CategoryDataService");
 export default {
   components: {
     VueEditor,
@@ -107,7 +107,9 @@ export default {
       NewsDataService.get(id)
         .then((response) => {
           this.currentNews = response.data;
-          this.categoryCurrent = this.currentNews.categories.map(this.mapCurrenCategory);
+          this.categoryCurrent = this.currentNews.categories.map(
+            this.mapCurrenCategory
+          );
           console.log(response.data);
         })
         .catch((e) => {

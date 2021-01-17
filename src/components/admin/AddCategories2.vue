@@ -55,8 +55,7 @@
 
 
 <script>
-// import NewsDataService from "../../services/NewsDataService";
-import CategoryService from "../../services/CategoryDataService";
+const CategoryService = () => import("../../services/CategoryDataService");
 export default {
   data() {
     return {

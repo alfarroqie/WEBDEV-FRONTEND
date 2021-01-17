@@ -56,8 +56,8 @@
 </template>
 
 <script>
-import UserService from "../services/UserDataService";
-import ErrorDialog from "./ErrorDialog.vue";
+const UserService = () => import("../services/UserDataService");
+const ErrorDialog = () => import("./ErrorDialog.vue");
 export default {
   components: {
     ErrorDialog,
