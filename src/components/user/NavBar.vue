@@ -5,7 +5,7 @@
         <a href="/news">
           <img
             src="https://i.ibb.co/Rb6yXLg/Voyagee-removebg-preview.png"
-            style="height: 70px"
+            style="height: 70px; width: auto"
           />
         </a>
         <v-spacer></v-spacer>
