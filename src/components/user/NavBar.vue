@@ -94,7 +94,7 @@
 </template>
 
 <script>
-const CategoryService = () => import("../../services/CategoryDataService");
+import CategoryService from "../../services/CategoryDataService";
 export default {
   data() {
     return {
@@ -117,9 +117,7 @@ export default {
         .then((response) => {
           this.category = response.data.map(this.mapNewsCategory);
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
     mapNewsCategory(category) {
       return {

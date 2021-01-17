@@ -127,8 +127,8 @@
 </template>
 
 <script>
-const NewsDataService = () => import("../../services/NewsDataService");
-const CategoryService = () => import("../../services/CategoryDataService");
+import NewsDataService from "../../services/NewsDataService";
+import CategoryService from "../../services/CategoryDataService";
 import { BASE_URL } from "../../constURL";
 
 export default {
@@ -148,11 +148,8 @@ export default {
       NewsDataService.getAll()
         .then((response) => {
           this.news = response.data;
-          console.log(response.data);
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
 
     setActiveNews(thisNews, index) {
@@ -164,9 +161,7 @@ export default {
         .then((response) => {
           this.category = response.data.map(this.mapNewsCategory);
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
     mapNewsCategory(category) {
       return {

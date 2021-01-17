@@ -79,8 +79,8 @@
 
 <script>
 import { VueEditor } from "vue2-editor";
-const NewsDataService = () => import("../../services/NewsDataService");
-const CategoryService = () => import("../../services/CategoryDataService");
+import NewsDataService from "../../services/NewsDataService";
+import CategoryService from "../../services/CategoryDataService";
 export default {
   components: {
     VueEditor,

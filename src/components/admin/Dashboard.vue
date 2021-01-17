@@ -26,7 +26,7 @@
 </template>
 
 <script>
-const DashboardService = () => import("../../services/DashboardDataService");
+import DashboardService from "../../services/DashboardDataService";
 export default {
   name: "Dashboard",
   methods: {

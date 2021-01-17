@@ -56,7 +56,7 @@
 </template>
 
 <script>
-const UserService = () => import("../services/UserDataService");
+import UserService from "../services/UserDataService";
 const ErrorDialog = () => import("./ErrorDialog.vue");
 export default {
   components: {

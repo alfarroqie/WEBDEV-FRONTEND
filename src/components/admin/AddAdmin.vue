@@ -66,7 +66,7 @@
 
 
 <script>
-const UserService = () => import("../../services/UserDataService");
+import UserService from "../../services/UserDataService";
 export default {
   data() {
     return {

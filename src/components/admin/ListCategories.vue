@@ -37,7 +37,7 @@
 </template>
 
 <script>
-const CategoryService = () => import("../../services/CategoryDataService");
+import CategoryService from "../../services/CategoryDataService";
 export default {
   name: "category-list",
   data() {

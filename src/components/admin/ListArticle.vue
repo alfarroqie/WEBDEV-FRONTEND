@@ -43,7 +43,7 @@
 </template>
 
 <script>
-const NewsDataService = () => import("../../services/NewsDataService");
+import NewsDataService from "../../services/NewsDataService";
 export default {
   name: "theNews-list",
   data() {

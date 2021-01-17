@@ -76,8 +76,8 @@
 </template>
 
 <script>
-const CategoryService = () => import("../../services/CategoryDataService");
-const ErrorDialog = () => import("../ErrorDialog.vue");
+import CategoryService from "../../services/CategoryDataService";
+import ErrorDialog from "../ErrorDialog.vue";
 export default {
   components: {
     ErrorDialog,
