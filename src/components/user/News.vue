@@ -37,8 +37,7 @@
 
 <script>
 import NewsDataService from "../../services/NewsDataService";
-const ShareDialog = () =>
-  import(/* webpackPrefetch: true */ "./ShareDialog.vue");
+const ShareDialog = () => import("./ShareDialog.vue");
 import { BASE_URL } from "../../constURL";
 
 export default {

@@ -57,8 +57,7 @@
 
 <script>
 import UserService from "../services/UserDataService";
-const ErrorDialog = () =>
-  import(/* webpackPrefetch: true */ "./ErrorDialog.vue");
+const ErrorDialog = () => import("./ErrorDialog.vue");
 export default {
   components: {
     ErrorDialog,

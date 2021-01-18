@@ -7,7 +7,7 @@ const routes = [
     {
         path: '/login',
         name: 'login',
-        component: () => import(/* webpackPrefetch: true */ "../components/Login.vue"),
+        component: () => import("../components/Login.vue"),
     },
     {
         path: '/admin',
@@ -16,69 +16,69 @@ const routes = [
             {
                 path: '/admin/dashboard',
                 name: 'Dashboard',
-                component: () => import(/* webpackPrefetch: true */ /* webpackChunkName: "admin-side" */ "../components/admin/Dashboard.vue"),
+                component: () => import("../components/admin/Dashboard.vue"),
             },
             {
                 path: '/admin/addCategories',
                 name: 'addCategories',
-                component: () => import(/* webpackPrefetch: true */ /* webpackChunkName: "admin-side" */ "../components/admin/AddCategories2.vue"),
+                component: () => import("../components/admin/AddCategories2.vue"),
             },
             {
                 path: '/admin/postArticle',
                 name: 'PostArticle',
-                component: () => import(/* webpackPrefetch: true */ /* webpackChunkName: "admin-side" */ "../components/admin/PostArticle.vue"),
+                component: () => import("../components/admin/PostArticle.vue"),
             },
             {
                 path: '/admin/listArticle',
                 name: 'ListArticle',
-                component: () => import(/* webpackPrefetch: true */ /* webpackChunkName: "admin-side" */ "../components/admin/ListArticle.vue"),
+                component: () => import("../components/admin/ListArticle.vue"),
             },
             {
                 path: '/admin/listCategories',
                 name: 'ListCategories',
-                component: () => import(/* webpackPrefetch: true */ /* webpackChunkName: "admin-side" */ "../components/admin/ListCategories.vue"),
+                component: () => import("../components/admin/ListCategories.vue"),
             },
             {
                 path: '/admin/listUser',
                 name: 'ListUser',
-                component: () => import(/* webpackPrefetch: true */ /* webpackChunkName: "admin-side" */ "../components/admin/ListUser.vue"),
+                component: () => import("../components/admin/ListUser.vue"),
             },
             {
                 path: '/admin/addAdmin',
                 name: 'AddAdmin',
-                component: () => import(/* webpackPrefetch: true */ /* webpackChunkName: "admin-side" */ "../components/admin/AddAdmin.vue"),
+                component: () => import("../components/admin/AddAdmin.vue"),
             },
             {
                 path: '/admin/news/:id',
                 name: 'news-details',
-                component: () => import(/* webpackPrefetch: true */ /* webpackChunkName: "admin-side" */ "../components/admin/EditArticle.vue"),
+                component: () => import("../components/admin/EditArticle.vue"),
             },
         ]
     },
 
     {
         path: '/',
-        component: () => import(/* webpackPrefetch: true */ "../components/user/NavBar.vue"),
+        component: () => import("../components/user/NavBar.vue"),
         children: [
             {
                 path: '/',
                 name: 'news-list',
-                component: () => import(/* webpackPrefetch: true */ /* webpackChunkName: "user-side" */ "../components/user/LandingPage.vue"),
+                component: () => import("../components/user/LandingPage.vue"),
             },
             {
                 path: '/news',
                 name: 'news-list',
-                component: () => import(/* webpackPrefetch: true */ /* webpackChunkName: "user-side" */ "../components/user/LandingPage.vue"),
+                component: () => import("../components/user/LandingPage.vue"),
             },
             {
                 path: '/news/id/:id',
                 name: 'News',
-                component: () => import(/* webpackPrefetch: true */ /* webpackChunkName: "user-side" */ "../components/user/News.vue"),
+                component: () => import("../components/user/News.vue"),
             },
             {
                 path: '/newsList/:category',
                 name: 'NewsList',
-                component: () => import/* webpackPrefetch: true */ /* webpackChunkName: "user-side" */ ("../components/user/NewsList.vue"),
+                component: () => import("../components/user/NewsList.vue"),
             },
         ]
     }
