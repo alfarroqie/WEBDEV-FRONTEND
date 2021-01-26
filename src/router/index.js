@@ -1,20 +1,17 @@
 import Vue from "vue";
 import Router from "vue-router";
 import VueRouter from "vue-router";
-import CategoryDataService from "../services/CategoryDataService.js"
-import NewsDataService from "../services/NewsDataService.js"
 Vue.use(Router);
 
 const routes = [
     {
         path: '/login',
         name: 'login',
-        component:() => import("../components/Login.vue"),
+        component: () => import("../components/Login.vue"),
     },
     {
         path: '/admin',
-        component:() => import("../components/admin/Cms.vue"),
-        meta: { sitemap: { ignoreRoute: true } },
+        component: () => import("../components/admin/Cms.vue"),
         children: [
             {
                 path: '/admin/dashboard',
@@ -66,44 +63,22 @@ const routes = [
             {
                 path: '/',
                 name: 'news-list',
-                component: () => import("../components/user/LandingPage.vue")
+                component: () => import("../components/user/LandingPage.vue"),
             },
             {
                 path: '/news',
                 name: 'news-list',
-                component: () => import("../components/user/LandingPage.vue")
-            },
-            {
-                path: '/userProfil',
-                name: 'user',
-                component: () => import("../components/user/UserProfil.vue")
-            },
-            {
-                path: '/editProfil',
-                name: 'editUser',
-                component: () => import("../components/user/userEditProfil.vue")
+                component: () => import("../components/user/LandingPage.vue"),
             },
             {
                 path: '/news/id/:id',
-                meta: {
-                    sitemap: {
-                        // Slugs can also be provided asynchronously
-                        // The callback must always return an array
-                        slugs: async () => await NewsDataService.getAllNewsSitemap(),
-                    }},
                 name: 'News',
-                component: () => import("../components/user/News.vue")
+                component: () => import("../components/user/News.vue"),
             },
             {
                 path: '/newsList/:category',
-                meta: {
-                    sitemap: {
-                        // Slugs can also be provided asynchronously
-                        // The callback must always return an array
-                        slugs: async () => await CategoryDataService.getAllCategorySitemap(),
-                    }},
                 name: 'NewsList',
-                component: () => import("../components/user/NewsList.vue")
+                component: () => import("../components/user/NewsList.vue"),
             },
         ]
     }

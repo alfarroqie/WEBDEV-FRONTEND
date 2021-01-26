@@ -5,17 +5,6 @@ class NewsDataService {
         return http.get("/news");
     }
 
-    async getAllNewsSitemap(){
-        const result = await http.get("/news");
-        let array = [];
-        result.data.forEach(item => {
-            array.push({
-                    id:item.id
-            })
-        });
-        return array;
-    }
-    
     get(id) {
         return http.get(`/news/id/${id}`);
     }
