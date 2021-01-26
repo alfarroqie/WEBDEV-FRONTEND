@@ -9,6 +9,17 @@ class CategoryDataService{
     getAll() {
         return http.get(CATEGORY_BASE_URL+"/");
     }
+    
+    async getAllCategorySitemap(){
+        const result = await http.get(CATEGORY_BASE_URL+"/");
+        let array = [];
+        result.data.forEach(item => {
+            array.push({
+                    category : item.name
+            })
+        });
+        return array;
+    }
 
     get(id) {
         return http.get(CATEGORY_BASE_URL+`/id/${id}`);
