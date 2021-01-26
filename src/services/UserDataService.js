@@ -9,7 +9,6 @@ class UserDataService{
     getAll(){
         return http.get(USER_BASE_URL);
     }
-
     login(data){
         return http.post(USER_BASE_URL+"/login", data);
     }

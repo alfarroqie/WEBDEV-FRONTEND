@@ -14,6 +14,8 @@ import News from '../components/user/News.vue'
 import NewsList from '../components/user/NewsList.vue'
 import LandingPage from '../components/user/LandingPage.vue'
 import Login from '../components/Login.vue'
+import SignUp from '../components/SignUp.vue'
+
 import VueRouter from "vue-router";
 Vue.use(Router);
 
@@ -22,6 +24,11 @@ const routes = [
         path: '/login',
         name: 'login',
         component: Login,
+    },
+    {
+        path: '/signup',
+        name: 'signup',
+        component: SignUp,
     },
     {
         path: '/admin',
