@@ -65,7 +65,7 @@ const routes = [
         children: [
             {
                 path: '/',
-                name: 'news-list',
+                name: 'news-list-first',
                 component: () => import("../components/user/LandingPage.vue")
             },
             {
