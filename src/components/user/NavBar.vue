@@ -38,7 +38,7 @@
               </v-list-item>
             </v-list>
           </v-menu>
-          <v-btn :to="'/login'" depressed color="#aac9c0" dark> Login </v-btn>
+            <v-btn :to="'/login'" depressed color="#aac9c0" dark> Login </v-btn>
         </v-toolbar-items>
         <v-menu v-if="$vuetify.breakpoint.smAndDown">
           <template v-slot:activator="{ on }">

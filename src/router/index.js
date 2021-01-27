@@ -13,7 +13,7 @@ import NavBar from '../components/user/NavBar.vue'
 import News from '../components/user/News.vue'
 import NewsList from '../components/user/NewsList.vue'
 import LandingPage from '../components/user/LandingPage.vue'
-import Login from '../components/Login.vue'
+import Login from '../components/Login2.vue'
 import SignUp from '../components/SignUp.vue'
 
 import VueRouter from "vue-router";

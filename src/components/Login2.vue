@@ -1,17 +1,7 @@
 <template>
     <div class="vue-template">
         <form>
-            <h3 class="text-center">Sign Up</h3>
-
-            <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" class="form-control form-control-lg" v-model="fullnameUser" required />
-            </div>
-
-            <div class="form-group">
-                <label>Username</label>
-                <input type="username" class="form-control form-control-lg" v-model="userName" required />
-            </div>
+            <h3 class="text-center">Login</h3>
 
             <div class="form-group">
                 <label>email</label>
@@ -22,12 +12,13 @@
                 <label>Password</label>
                 <input type="password" class="form-control form-control-lg" v-model="passwordUser" required />
             </div>
-            <RouterLink :to="'/signup'">
-                <a href="#"> <button type="submit" class="btn btn-primary btn-lg btn-block" @click="addUser">Sign Up</button> </a>
+
+            <RouterLink :to="'/login'">
+            <a href=""> <button type="submit" class="btn btn-primary btn-lg btn-block" @click="loginUser">Login</button> </a>
             </RouterLink>
-            <p class="forgot-account text-right">
-                Already registered?
-                <router-link :to="'/login'">Log in</router-link>
+             <p class="forgot-account text-right">
+                Dont have account?
+                <router-link :to="'/signup'">Sign Up</router-link>
             </p>
         </form>
     </div>
@@ -42,29 +33,25 @@ export default {
     },
     data() {
         return {
-            fullnameUser : "",
-            userName : "",
             emailUser : "",
             passwordUser : "",
         }
     },
     methods:{
-      addUser : function(){
+      loginUser : function(){
           const users = {
-            name: this.fullnameUser,
-            username: this.userName,
             email: this.emailUser,
             password: this.passwordUser,
-            isAdmin: false,
           }
 
           this.isLoading = true;
-          UserService.create(users)
+          UserService.login(users)
               .then(result => {
                 this.isLoading = false;
                 console.log(result);
-                this.$router.push("/login");
-                // location.reload()
+                localStorage.removeItem('user');
+                localStorage.setItem('user', JSON.stringify(result.data));
+                this.$router.push("/");
                 })
               .catch(err => {
                 this.isLoading = false;
