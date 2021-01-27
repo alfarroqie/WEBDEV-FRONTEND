@@ -38,7 +38,8 @@
               </v-list-item>
             </v-list>
           </v-menu>
-            <v-btn :to="'/login'" depressed color="#aac9c0" dark> Login </v-btn>
+            <v-btn depressed color="#aac9c0" dark v-if="auth" @click="logout"> Logout </v-btn>
+            <v-btn :to="'/login'" depressed color="#aac9c0" dark v-else> Login </v-btn>
         </v-toolbar-items>
         <v-menu v-if="$vuetify.breakpoint.smAndDown">
           <template v-slot:activator="{ on }">
@@ -70,7 +71,8 @@
                   </v-list>
                 </v-menu>
                 <v-list-item-title>
-                  <v-btn text block :href="'/login'">Login</v-btn>
+                  <v-btn text block v-if="auth" @click="logout">Logout</v-btn>
+                  <v-btn text block v-else :href="'/login'">Login</v-btn>
                 </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
@@ -95,6 +97,7 @@
 
 <script>
 import CategoryService from "../../services/CategoryDataService";
+
 export default {
   data() {
     return {
@@ -105,6 +108,7 @@ export default {
         { id: "4", title: "Tips", link: "/newsList/Tips" },
       ],
       category: [],
+      auth: false,
     };
   },
 
@@ -128,6 +132,9 @@ export default {
         id: category.id,
       };
     },
+    logout(){
+      localStorage.removeItem('user');
+    }
   },
   computed: {
     locCategory: function () {
@@ -136,6 +143,13 @@ export default {
   },
   mounted() {
     this.retrieveCategory();
+    let temp = JSON.parse(localStorage.getItem('user'));
+    if (temp.token){
+      this.auth = true;
+    }
+    else{
+      this.auth = false;
+    }
   },
 };
 </script>
