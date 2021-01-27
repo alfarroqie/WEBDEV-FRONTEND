@@ -134,6 +134,7 @@ export default {
     },
     logout(){
       localStorage.removeItem('user');
+      location.reload();
     }
   },
   computed: {

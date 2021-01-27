@@ -51,6 +51,7 @@ export default {
                 console.log(result);
                 localStorage.removeItem('user');
                 localStorage.setItem('user', JSON.stringify(result.data));
+                console.log("Authentication: ",result.data);
                 this.$router.push("/");
                 })
               .catch(err => {

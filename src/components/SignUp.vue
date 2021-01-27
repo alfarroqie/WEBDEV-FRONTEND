@@ -58,14 +58,32 @@ export default {
             isAdmin: false,
           }
 
+          const log = {
+                email: this.emailUser,
+                password:this.passwordUser
+            }
+
           this.isLoading = true;
           UserService.create(users)
               .then(result => {
                 this.isLoading = false;
                 console.log(result);
-                this.$router.push("/login");
-                // location.reload()
-                })
+                    UserService.login(log)
+                    .then(result => {
+                        this.isLoading = false;
+                        console.log(result);
+                        localStorage.removeItem('user');
+                        localStorage.setItem('user', JSON.stringify(result.data));
+                        console.log("Authentication: ",result.data);
+                        this.$router.push("/");
+                    })
+                    .catch(err => {
+                        this.isLoading = false;
+                        this.isError = true;
+                        console.log(err)})
+                        // this.$router.push("/login");
+                        // location.reload()
+                    })
               .catch(err => {
                 this.isLoading = false;
                 this.isError = true;
