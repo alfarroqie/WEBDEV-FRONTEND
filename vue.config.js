@@ -1,5 +1,5 @@
 require = require('esm')(module);
-const { routes } = require('./src/router/index.js');
+const { routes } = require('./src/routes.js');
 module.exports = {
     devServer: {
       port: 8083
