@@ -82,11 +82,8 @@ export default {
       NewsDataService.get(id)
         .then((response) => {
           this.currentNews = response.data;
-          console.log(response.data);
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
   },
   mounted() {

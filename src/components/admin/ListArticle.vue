@@ -22,9 +22,15 @@
             <v-icon small class="mr-2" @click="editNews(item.id)"
               >mdi-pencil</v-icon
             >
-            <v-icon small class="mr-2" @click="deleteNews(item.id)">mdi-delete</v-icon>
-            <v-icon small class="mr-2" @click="publishNews(item.id)">mdi-upload</v-icon>
-            <v-icon small class="mr-2" @click="unpublishNews(item.id)">mdi-download</v-icon>
+            <v-icon small class="mr-2" @click="deleteNews(item.id)"
+              >mdi-delete</v-icon
+            >
+            <v-icon small class="mr-2" @click="publishNews(item.id)"
+              >mdi-upload</v-icon
+            >
+            <v-icon small class="mr-2" @click="unpublishNews(item.id)"
+              >mdi-download</v-icon
+            >
           </template>
         </v-data-table>
 
@@ -58,67 +64,54 @@ export default {
       NewsDataService.getAll()
         .then((response) => {
           this.theNews = response.data.map(this.getDisplayNews);
-          console.log(response.data);
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
 
     refreshList() {
       this.retrieveNews();
     },
 
-    removeAllNews: function() {
+    removeAllNews: function () {
       NewsDataService.deleteAll()
-        .then((response) => {
-          console.log(response.data);
+        .then(() => {
           this.refreshList();
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
 
     searchTitle() {
       NewsDataService.findByTitle(this.title)
         .then((response) => {
           this.theNews = response.data.map(this.getDisplayNews);
-          console.log(response.data);
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
 
     editNews(id) {
       this.$router.push({ name: "news-details", params: { id: id } });
     },
 
-    publishNews(id){
+    publishNews(id) {
       const news = {
-        publish: true
-      }
-      NewsDataService.publishNews(id,news)
+        publish: true,
+      };
+      NewsDataService.publishNews(id, news)
         .then(() => {
           this.refreshList();
         })
-        .catch((err) => {
-          console.log(err);
-        })
+        .catch(() => {});
     },
 
-    unpublishNews(id){
+    unpublishNews(id) {
       const news = {
-        publish: false
-      }
-      NewsDataService.publishNews(id,news)
+        publish: false,
+      };
+      NewsDataService.publishNews(id, news)
         .then(() => {
           this.refreshList();
         })
-        .catch((err) => {
-          console.log(err);
-        })
+        .catch(() => {});
     },
 
     deleteNews(id) {
@@ -126,9 +119,7 @@ export default {
         .then(() => {
           this.refreshList();
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
 
     getDisplayNews(news) {

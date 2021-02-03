@@ -37,8 +37,8 @@
 
 <script>
 import NewsDataService from "../../services/NewsDataService";
-import ShareDialog from "./ShareDialog.vue";
-import {BASE_URL} from "../../constURL";
+const ShareDialog = () => import("./ShareDialog.vue");
+import { BASE_URL } from "../../constURL";
 
 export default {
   components: {
@@ -59,17 +59,10 @@ export default {
           this.currentNews = response.data;
           this.currentNews.views += 1;
           NewsDataService.updateViews(id, this.currentNews)
-            .then((response) => {
-              console.log(response.data);
-            })
-            .catch((e) => {
-              console.log(e);
-            });
-          console.log(response.data);
+            .then(() => {})
+            .catch(() => {});
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
   },
   mounted() {

@@ -40,13 +40,13 @@
                     required
                   ></v-select> -->
                   <v-select
-                      v-model="idCategoryNews"
-                      :items="category"
-                      attach
-                      chips
-                      placeholder="Pilih Kategori"
-                      multiple
-                    ></v-select>
+                    v-model="idCategoryNews"
+                    :items="category"
+                    attach
+                    chips
+                    placeholder="Pilih Kategori"
+                    multiple
+                  ></v-select>
                 </div>
               </div>
             </div>
@@ -103,9 +103,7 @@ export default {
         .then((response) => {
           this.category = response.data.map(this.mapNewsCategory);
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
     addNews: function () {
       let news = new FormData();
@@ -113,7 +111,7 @@ export default {
       news.append("title", this.title);
       news.append("content", this.content);
       news.append("publish", false);
-      for (const i in this.idCategoryNews){
+      for (const i in this.idCategoryNews) {
         news.append("categoryId[]", this.idCategoryNews[i]);
       }
       news.append("pictLink", this.pictLink);
@@ -127,13 +125,10 @@ export default {
       //   pictLink: this.pictLink
       // }
       NewsDataService.create(news)
-        .then((response) => {
-          console.log(response.data);
+        .then(() => {
           this.message = "The news was created successfully!";
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch(() => {});
     },
     mapNewsCategory(category) {
       return {

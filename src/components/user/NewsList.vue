@@ -71,7 +71,7 @@
 
 <script>
 import NewsDataService from "../../services/NewsDataService";
-import { BASE_URL } from '../../constURL';
+import { BASE_URL } from "../../constURL";
 
 export default {
   name: "news-list",
@@ -91,29 +91,20 @@ export default {
         NewsDataService.findNewest()
           .then((response) => {
             this.news = response.data;
-            console.log(response.data);
           })
-          .catch((e) => {
-            console.log(e);
-          });
+          .catch(() => {});
       } else if (category == "Terpopuler") {
         NewsDataService.findPopular()
           .then((response) => {
             this.news = response.data;
-            console.log(response.data);
           })
-          .catch((e) => {
-            console.log(e);
-          });
+          .catch(() => {});
       } else {
         NewsDataService.findByCategory(category)
           .then((response) => {
             this.news = response.data;
-            console.log(response.data);
           })
-          .catch((e) => {
-            console.log(e);
-          });
+          .catch(() => {});
       }
     },
 
@@ -127,20 +118,14 @@ export default {
         NewsDataService.findByTitle(this.title)
           .then((response) => {
             this.news = response.data;
-            console.log(response.data);
           })
-          .catch((e) => {
-            console.log(e);
-          });
+          .catch(() => {});
       } else {
         NewsDataService.getAll()
           .then((response) => {
             this.news = response.data;
-            console.log(response.data);
           })
-          .catch((e) => {
-            console.log(e);
-          });
+          .catch(() => {});
       }
     },
   },
