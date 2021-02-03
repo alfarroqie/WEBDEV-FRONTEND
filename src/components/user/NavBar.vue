@@ -155,6 +155,9 @@ export default {
     else{
       this.auth = false;
     }
+    if(temp.dataUser.isAdmin){
+      this.$router.push("/admin");
+    }
   },
 };
 </script>
