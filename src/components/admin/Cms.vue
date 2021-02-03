@@ -97,11 +97,11 @@ export default {
     onLogOutClick() {
       localStorage.removeItem('user');
       this.$router.push("/");
+      location.reload();
     },
   },
   mounted() {
     let temp = JSON.parse(localStorage.getItem('user'));
-    console.log(!temp.dataUser.isAdmin);
     if(!temp.dataUser.isAdmin){
       this.$router.push("/");
     }
