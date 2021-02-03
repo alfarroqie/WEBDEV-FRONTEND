@@ -15,6 +15,7 @@ import NewsList from '../components/user/NewsList.vue'
 import LandingPage from '../components/user/LandingPage.vue'
 import Login from '../components/Login2.vue'
 import SignUp from '../components/SignUp.vue'
+import UserProfile from '../components/user/UserProfile.vue'
 
 import VueRouter from "vue-router";
 Vue.use(Router);
@@ -100,6 +101,11 @@ const routes = [
                 path: '/newsList/:category',
                 name: 'NewsList',
                 component: NewsList
+            },
+            {
+                path: '/users',
+                name: 'UserProfile',
+                component: UserProfile
             },
         ]
     }

@@ -25,6 +25,7 @@
 </template>
 
 <script>
+// import UserDataService from '../services/UserDataService';
 import UserService from "../services/UserDataService";
 import ErrorDialog from "./ErrorDialog.vue";
 export default {
@@ -48,11 +49,17 @@ export default {
           UserService.login(users)
               .then(result => {
                 this.isLoading = false;
-                console.log(result);
+                // console.log(result);
                 localStorage.removeItem('user');
                 localStorage.setItem('user', JSON.stringify(result.data));
-                console.log("Authentication: ",result.data);
-                this.$router.push("/");
+                const datauser = result.data.dataUser;
+                // console.log("Authentication: ",result.data);
+                if(datauser.isAdmin){
+                    this.$router.push("/admin");    
+                }
+                else{
+                    this.$router.push("/");
+                }
                 })
               .catch(err => {
                 this.isLoading = false;

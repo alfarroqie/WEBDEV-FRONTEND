@@ -19,6 +19,9 @@ class UserDataService{
     delete() {
         return http.delete(USER_BASE_URL+"/delete");
     }
+    getProfilUser(id){
+        return http.get(USER_BASE_URL+`/${id}`);
+    }
 }
 
 export default new UserDataService();

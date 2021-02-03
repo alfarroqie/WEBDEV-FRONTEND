@@ -38,6 +38,7 @@
               </v-list-item>
             </v-list>
           </v-menu>
+            <v-btn depressed color="#aac9c0" dark v-if="auth" @click="profilMenu"> Profil </v-btn>
             <v-btn depressed color="#aac9c0" dark v-if="auth" @click="logout"> Logout </v-btn>
             <v-btn :to="'/login'" depressed color="#aac9c0" dark v-else> Login </v-btn>
         </v-toolbar-items>
@@ -71,7 +72,8 @@
                   </v-list>
                 </v-menu>
                 <v-list-item-title>
-                  <v-btn text block v-if="auth" @click="logout">Logout</v-btn>
+                  <v-btn text block v-if="auth" @click="profilMenu"> Profil </v-btn>
+                  <v-btn text block v-if="auth" @click="logout"> Logout </v-btn>
                   <v-btn text block v-else :href="'/login'">Login</v-btn>
                 </v-list-item-title>
               </v-list-item-content>
@@ -134,8 +136,12 @@ export default {
     },
     logout(){
       localStorage.removeItem('user');
+      this.$router.push("/");
       location.reload();
-    }
+    },
+    profilMenu(){
+      this.$router.push("/users");
+    },
   },
   computed: {
     locCategory: function () {
