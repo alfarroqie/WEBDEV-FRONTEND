@@ -9,7 +9,6 @@ class UserDataService{
     getAll(){
         return http.get(USER_BASE_URL);
     }
-
     login(data){
         return http.post(USER_BASE_URL+"/login", data);
     }
@@ -19,6 +18,9 @@ class UserDataService{
     }
     delete() {
         return http.delete(USER_BASE_URL+"/delete");
+    }
+    getProfilUser(id){
+        return http.get(USER_BASE_URL+`/${id}`);
     }
 }
 

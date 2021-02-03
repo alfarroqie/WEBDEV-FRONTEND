@@ -93,7 +93,10 @@ export default {
       if (this.$route.path !== "/admin/addAdmin")
         this.$router.push("/admin/addAdmin");
     },
-    onLogOutClick() {},
+    onLogOutClick() {
+      localStorage.removeItem('user');
+      this.$router.push("/");
+    },
   },
   mounted() {},
 };

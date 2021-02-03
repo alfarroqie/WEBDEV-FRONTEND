@@ -34,7 +34,7 @@
           name="submit"
           value="LOGIN"
           @click="login"
-        /><a href="#" id="signup">Don't have account yet?</a>
+        /><a @click="signup">Don't have account yet?</a>
       </form>
     </div>
     <v-overlay :value="overlay" v-if="isLoading">
@@ -68,29 +68,35 @@ export default {
       Password: "",
       isLoading: false,
       isError: false,
-    };
+    }
   },
   methods: {
-    login: function () {
+    login: function() {
       console.log(this.Email);
       console.log(this.Password);
+      
       const sign = {
         email: this.Email,
         password: this.Password,
       };
+      
       this.isLoading = true;
+
       UserService.login(sign)
-        .then((result) => {
+        .then(result => {
           this.isLoading = false;
           console.log(result);
         })
-        .catch((err) => {
+        .catch(err => {
           this.isLoading = false;
           this.isError = true;
           console.log(err);
         });
     },
-  },
+    signup: function() {
+    this.$router.push("/signup");
+    }
+  }
 };
 </script>
 
