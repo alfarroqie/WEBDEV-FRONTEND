@@ -7,7 +7,7 @@
             <div class="content">
               <h1>{{ currentNews.title }}</h1>
               <h5>Author: {{ currentNews.author }}</h5>
-              <h6>Date: {{ currentNews.createdAt }}</h6>
+              <h6>Date: {{ date }}</h6>
               <v-list align="right">
                 <v-icon medium>mdi-eye-outline</v-icon>
                 <v-text> {{ currentNews.views }} views </v-text>
@@ -51,6 +51,16 @@ export default {
       share: false,
       base_url: BASE_URL,
     };
+  },
+  computed: {
+    date() {
+      // Format : DayName, DD/MM/YYYY HH:MM
+      const fullDate = new Date(this.currentNews.createdAt);
+      const day = fullDate.toString().split(" ")[0];
+      const date = fullDate.toLocaleDateString();
+      const time = `${fullDate.getHours()}:${fullDate.getMinutes()}`;
+      return `${day} ${date} ${time}`;
+    },
   },
   methods: {
     getNews(id) {
