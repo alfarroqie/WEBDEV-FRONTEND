@@ -1,26 +1,30 @@
 <template>
     <div class="vue-template">
-        <form>
-            <h3 class="text-center">Login</h3>
+        <v-card class="event-card"> 
+            <v-list align = "center">
+                <form>
+                    <h3 class="text-center">Login</h3>
 
-            <div class="form-group">
-                <label>email</label>
-                <input type="email" class="form-control form-control-lg" v-model="emailUser" required />
-            </div>
+                    <div class="form-group">
+                        <label>email</label>
+                        <input type="email" class="form-control form-control-lg" v-model="emailUser" required />
+                    </div>
 
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control form-control-lg" v-model="passwordUser" required />
-            </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control form-control-lg" v-model="passwordUser" required />
+                    </div>
 
-            <RouterLink :to="'/login'">
-            <a href=""> <button type="submit" class="btn btn-primary btn-lg btn-block" @click="loginUser">Login</button> </a>
-            </RouterLink>
-             <p class="forgot-account text-right">
-                Dont have account?
-                <router-link :to="'/signup'">Sign Up</router-link>
-            </p>
-        </form>
+                    <RouterLink :to="'/login'">
+                    <a href=""> <button type="submit" class="btn btn-primary btn-lg btn-block" @click="loginUser">Login</button> </a>
+                    </RouterLink>
+                    <p class="forgot-account text-right">
+                        Dont have account?
+                        <router-link :to="'/signup'">Sign Up</router-link>
+                    </p>
+                </form>
+            </v-list>
+        </v-card>
     </div>
 </template>
 
@@ -71,6 +75,12 @@ export default {
 </script>
 
 <style>
+.event-card {
+  overflow: hidden;
+  width: 50%;
+  margin: 60px auto auto;
+  border-radius: 0.3em;
+}
 body {
     margin-top: 50px;
 }
