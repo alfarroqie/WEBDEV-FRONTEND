@@ -5,7 +5,12 @@ export const routes = [
     {
         path: '/login',
         name: 'login',
-        component:() => import("./components/Login.vue"),
+        component:() => import("./components/Login2.vue"),
+    },
+    {
+        path: '/signup',
+        name: 'signup',
+        component:() => import("./components/SignUp.vue"),
     },
     {
         path: '/admin',
@@ -100,6 +105,11 @@ export const routes = [
                     }},
                 name: 'NewsList',
                 component: () => import("./components/user/NewsList.vue")
+            },
+            {
+                path: '/users',
+                name: 'userProfile',
+                component: () => import("./components/user/UserProfile.vue")
             },
         ]
     }

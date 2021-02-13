@@ -63,7 +63,8 @@
 
 <script>
 export default {
-  name: "AddCategories",
+  data() {
+  },
   methods: {
     onDashboardClick() {
       if (this.$route.path !== "/admin/dashboard")
@@ -93,9 +94,18 @@ export default {
       if (this.$route.path !== "/admin/addAdmin")
         this.$router.push("/admin/addAdmin");
     },
-    onLogOutClick() {},
+    onLogOutClick() {
+      localStorage.removeItem('user');
+      this.$router.push("/");
+      location.reload();
+    },
   },
-  mounted() {},
+  mounted() {
+    let temp = JSON.parse(localStorage.getItem('user'));
+    if(!temp.dataUser.isAdmin){
+      this.$router.push("/");
+    }
+  }
 };
 </script>
 <style>
