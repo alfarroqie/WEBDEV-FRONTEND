@@ -16,10 +16,11 @@
                 </v-btn>
                 <share-dialog v-model="share"></share-dialog>
                 <v-btn icon>
-                  <v-icon>mdi-bookmark-outline</v-icon>
+                  <v-icon @click="saveNews()">mdi-bookmark-outline</v-icon>
                 </v-btn>
                 <v-btn icon>
-                  <v-icon>mdi-heart-outline</v-icon>
+                  <v-icon @click="likeNews()">mdi-heart-outline</v-icon>
+                  <v-text> {{ like }}</v-text>
                 </v-btn>
               </v-list>
               <img :src="base_url + currentNews.pictLink" />
@@ -37,6 +38,7 @@
 
 <script>
 import NewsDataService from "../../services/NewsDataService";
+import UserDataService from "../../services/UserDataService";
 const ShareDialog = () => import("./ShareDialog.vue");
 import { BASE_URL } from "../../constURL";
 
@@ -48,6 +50,8 @@ export default {
   data() {
     return {
       currentNews: null,
+      currentUser: null,
+      like: null,
       share: false,
       base_url: BASE_URL,
     };
@@ -67,6 +71,7 @@ export default {
       NewsDataService.get(id)
         .then((response) => {
           this.currentNews = response.data;
+          this.like = this.currentNews.NewsLiked.length;
           this.currentNews.views += 1;
           NewsDataService.updateViews(id, this.currentNews)
             .then(() => {})
@@ -74,9 +79,49 @@ export default {
         })
         .catch(() => {});
     },
+    saveNews(){
+      if(this.currentUser){
+        const save = {
+        newsId: this.$route.params.id,
+        userId: this.currentUser.userId,
+        }
+        console.log(save);
+        UserDataService.saveNews(save)
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((e) => {
+            console.log(e);
+          })
+      }
+      else{
+        this.$router.push("/login");
+      }
+    },
+    likeNews(){
+      if(this.currentUser){
+        const like = {
+        newsId: this.$route.params.id,
+        userId: this.currentUser.userId,
+        }
+        UserDataService.likeNews(like)
+          .then((response) => {
+            console.log(response.data);
+            location.reload();
+          })
+          .catch((e) => {
+            console.log(e);
+          })
+      }
+      else{
+        this.$router.push("/login");
+      }
+    }
   },
   mounted() {
     this.getNews(this.$route.params.id);
+    let temp = JSON.parse(localStorage.getItem('user'));
+      this.currentUser = temp.dataUser;
   },
 };
 </script>

@@ -21,7 +21,13 @@ class UserDataService{
         return http.delete(USER_BASE_URL+`/delete/${id}`, {headers: auth()});
     }
     getProfilUser(id){
-        return http.get(USER_BASE_URL+`/${id}`);
+        return http.get(USER_BASE_URL+`/profile/${id}`, {headers: auth()});
+    }
+    saveNews(data){
+        return http.post(USER_BASE_URL+"/save",data, {headers: auth()});
+    }
+    likeNews(data){
+        return http.post(USER_BASE_URL+"/like",data, {headers: auth()});
     }
 }
 
