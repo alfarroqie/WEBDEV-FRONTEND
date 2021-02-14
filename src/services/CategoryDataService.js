@@ -1,9 +1,10 @@
 import http from "../http-common";
+import authService from "./authService";
 const CATEGORY_BASE_URL = "/categorys"
 class CategoryDataService{
     
     create(data) {
-        return http.post(CATEGORY_BASE_URL+"/create", data);
+        return http.post(CATEGORY_BASE_URL+"/create", data, {headers: authService()});
     }
 
     getAll() {
@@ -26,11 +27,11 @@ class CategoryDataService{
     }
 
     update(id, data) {
-        return http.put(CATEGORY_BASE_URL+`/id/${id}`, data);
+        return http.put(CATEGORY_BASE_URL+`/id/${id}`, data, {headers: authService()});
     }
 
     delete(id) {
-        return http.delete(CATEGORY_BASE_URL+`/id/${id}`);
+        return http.delete(CATEGORY_BASE_URL+`/id/${id}`,{headers: authService()});
     }
 }
 

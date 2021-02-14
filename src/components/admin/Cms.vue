@@ -97,7 +97,6 @@ export default {
     onLogOutClick() {
       localStorage.removeItem('user');
       this.$router.push("/");
-      location.reload();
     },
   },
   mounted() {

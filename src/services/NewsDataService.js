@@ -1,4 +1,5 @@
 import http from "../http-common";
+import auth from "../services/authService";
 
 class NewsDataService {
     getAll() {
@@ -21,11 +22,11 @@ class NewsDataService {
     }
 
     create(data) {
-        return http.post("/news", data);
+        return http.post("/news", data, {headers: auth()});
     }
 
     update(id, data) {
-        return http.put(`/news/id/${id}`, data);
+        return http.put(`/news/id/${id}`, data, {headers: auth()});
     }
 
     updateViews(id, data) {
@@ -33,11 +34,11 @@ class NewsDataService {
     }
 
     delete(id) {
-        return http.delete(`/news/${id}`);
+        return http.delete(`/news/${id}`, {headers: auth()});
     }
 
     deleteAll() {
-        return http.delete(`/news`);
+        return http.delete(`/news`, {headers: auth()});
     }
 
     findByTitle(title) {
@@ -57,7 +58,7 @@ class NewsDataService {
         return http.get(`/news/popular`);
     }
     publishNews(id,data){
-        return http.put(`/news/${id}`, data);
+        return http.put(`/news/id/${id}`, data, {headers: auth()});
     }
 }
 
