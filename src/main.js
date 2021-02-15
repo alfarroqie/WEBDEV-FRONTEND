@@ -4,6 +4,7 @@ import App from './App.vue'
 import router from './router/index'
 import vuetify from './plugins/vuetify';
 import VueAnalytics from 'vue-analytics'
+import './registerServiceWorker'
 
 Vue.use(VueAnalytics, {
   id: 'UA-186540839-1',
