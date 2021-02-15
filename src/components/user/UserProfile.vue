@@ -10,14 +10,6 @@
                     <h3>{{ userData.email }}</h3>
                 </div>
                 </v-list>
-                    <v-list align="center">
-                            <v-btn
-                                depressed
-                                color="primary"
-                                >
-                                Edit Profil
-                            </v-btn>
-                    </v-list>
                 <v-list align="center">
                     <v-divider class="mx-4"></v-divider>
                         <div class="title">
