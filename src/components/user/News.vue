@@ -51,6 +51,8 @@ export default {
     return {
       currentNews: null,
       currentUser: null,
+      newsSaved:[],
+      checkSave: false,
       like: null,
       share: false,
       base_url: BASE_URL,
@@ -116,12 +118,25 @@ export default {
       else{
         this.$router.push("/login");
       }
+    },
+    checkSaveNews(){
+      if(this.currentUser){
+        UserDataService.getProfilUser(this.currentUser.idUser)
+          .then((response) => {
+            this.newsSaved = response.data.NewsSaved;
+          })
+          .catch((e)=> {
+            console.log(e);
+          })
+        console.log(this.newsSaved);
+      }
     }
   },
   mounted() {
     this.getNews(this.$route.params.id);
     let temp = JSON.parse(localStorage.getItem('user'));
-      this.currentUser = temp.dataUser;
+    this.currentUser = temp.dataUser;
+    this.checkSaveNews();
   },
 };
 </script>

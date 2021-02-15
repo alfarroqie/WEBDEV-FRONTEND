@@ -31,33 +31,31 @@
                                 v-for="(thisNews, index) in news"
                                 :key="index"
                               >
-                                <v-card class="event-card">
-                                  <v-layout row>
-                                    <img :src="base_url + thisNews.pictLink" />
-                                    <v-flex style="width: 100px">
-                                      <div>
-                                        <router-link :to="'/news/id/' + thisNews.id">
-                                          <v-card-text
-                                            class="title"
-                                            @click="setActiveNews(thisNews, index)"
-                                          >
-                                            {{ thisNews.title }}
-                                          </v-card-text>
-                                        </router-link>
-                                        <h3 class="author">{{ thisNews.author }}</h3>
-                                      </div>
-                                      <v-divider class="mx-4"></v-divider>
-                                      <v-card-actions>
-                                        <v-col>
-                                          <v-icon medium>mdi-eye-outline</v-icon>
-                                          <v-text> {{ thisNews.views }} views </v-text>
-                                        </v-col>
-                                        <v-col class="text-right">
-                                          <v-icon medium>mdi-heart-outline</v-icon>
-                                        </v-col>
-                                      </v-card-actions>
-                                    </v-flex>
-                                  </v-layout>
+                                <v-card class="mx-auto flexcard" height="100%" max-width="300">
+                                  <v-img
+                                    :src="base_url + thisNews.pictLink"
+                                    height="200px"
+                                    max-height="200px"
+                                  ></v-img>
+                                  <a
+                                    class="judul grow"
+                                    @click="setActiveNews(thisNews, index)"
+                                    :href="'/news/id/' + thisNews.id"
+                                  >
+                                    {{ thisNews.title }}
+                                  </a>
+                                  <div class="event-card" style="border-bottom: 0.3em">
+                                    <v-divider class="mx-3"></v-divider>
+                                    <v-card-actions>
+                                      <v-col>
+                                        <v-icon medium>mdi-eye-outline</v-icon>
+                                        <v-text> {{ thisNews.views }} views</v-text>
+                                      </v-col>
+                                      <v-col class="text-right">
+                                        <v-icon medium>mdi-heart-outline</v-icon>
+                                      </v-col>
+                                    </v-card-actions>
+                                  </div>
                                 </v-card>
                               </li>
                             </v-flex>
@@ -124,20 +122,16 @@ export default {
   margin: 60px auto auto;
   border-radius: 0.3em;
 }
-/* .event-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-} */
+.flexcard {
+  display: flex;
+  flex-direction: column;
+}
 .content {
   padding: 50px 30px;
 }
 .content h1 {
   font-size: 2em;
 }
-/* .container {
-  margin-bottom: 2em;
-} */
 
 .container li {
   list-style: none;
